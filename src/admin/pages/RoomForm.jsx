@@ -104,10 +104,12 @@ export default function RoomForm() {
   };
 
   return (
-    <div className="max-w-2xl w-full">
+    <div className="w-full">
       <h1 className="text-xl font-bold text-gray-900 mb-6">{isEdit ? "Edit Room" : "Add New Room"}</h1>
 
-      <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-5">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        {/* ── Main Form ── */}
+        <form onSubmit={handleSubmit} className="xl:col-span-2 bg-white rounded-xl shadow-sm p-6 flex flex-col gap-5">
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -251,17 +253,40 @@ export default function RoomForm() {
 
         {error && <p className="text-red-500 text-sm">{error}</p>}
 
-        <div className="flex gap-3 pt-2">
-          <button type="submit" disabled={loading || uploading}
-            className="bg-red-500 hover:bg-red-600 disabled:opacity-60 text-white font-bold px-6 py-2.5 rounded-lg transition-colors">
-            {uploading ? "Uploading images..." : loading ? "Saving..." : isEdit ? "Update Room" : "Create Room"}
-          </button>
-          <button type="button" onClick={() => navigate("/admin/rooms")}
-            className="border border-gray-200 text-gray-600 hover:bg-gray-50 font-medium px-6 py-2.5 rounded-lg transition-colors">
-            Cancel
-          </button>
+          <div className="flex gap-3 pt-2">
+            <button type="submit" disabled={loading || uploading}
+              className="bg-red-500 hover:bg-red-600 disabled:opacity-60 text-white font-bold px-6 py-2.5 rounded-lg transition-colors">
+              {uploading ? "Uploading images..." : loading ? "Saving..." : isEdit ? "Update Room" : "Create Room"}
+            </button>
+            <button type="button" onClick={() => navigate("/admin/rooms")}
+              className="border border-gray-200 text-gray-600 hover:bg-gray-50 font-medium px-6 py-2.5 rounded-lg transition-colors">
+              Cancel
+            </button>
+          </div>
+        </form>
+
+        {/* ── Side Panel ── */}
+        <div className="flex flex-col gap-4">
+          <div className="bg-white rounded-xl shadow-sm p-5">
+            <h3 className="text-sm font-bold text-gray-900 mb-3">Tips</h3>
+            <ul className="flex flex-col gap-2 text-xs text-gray-500">
+              <li>• Use a clear location name like <span className="font-semibold text-gray-700">Varanasi</span></li>
+              <li>• Add multiple high-quality images for better visibility</li>
+              <li>• Set availability dates only if the room has a fixed window</li>
+              <li>• Leave availability empty to always show as available</li>
+              <li>• Mark inactive to hide a room without deleting it</li>
+            </ul>
+          </div>
+          <div className="bg-red-50 border border-red-100 rounded-xl p-5">
+            <h3 className="text-sm font-bold text-red-700 mb-2">Amenities Guide</h3>
+            <ul className="flex flex-col gap-1.5 text-xs text-red-600">
+              <li>• AC, WiFi, TV are the most searched filters</li>
+              <li>• River View & Temple View attract premium guests</li>
+              <li>• Work Desk is popular for business travelers</li>
+            </ul>
+          </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

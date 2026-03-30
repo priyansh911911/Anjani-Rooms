@@ -69,6 +69,37 @@ const api = {
 
   deleteCategory: (id) =>
     fetch(`${BASE}/categories/${id}`, { method: "DELETE", headers: headers(true) }).then((r) => r.json()),
+
+  // Gallery
+  getGallery: () =>
+    fetch(`${BASE}/gallery`, { headers: headers() }).then((r) => r.json()),
+
+  uploadGalleryImages: (files) => {
+    const form = new FormData();
+    files.forEach((f) => form.append("images", f));
+    return fetch(`${BASE}/gallery`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${localStorage.getItem("anjani_token")}` },
+      body: form,
+    }).then((r) => r.json());
+  },
+
+  deleteGalleryImage: (imageUrl) =>
+    fetch(`${BASE}/gallery`, { method: "DELETE", headers: headers(true), body: JSON.stringify({ imageUrl }) }).then((r) => r.json()),
+
+  // Profile Image
+  getProfileImage: () =>
+    fetch(`${BASE}/profile-image`, { headers: headers() }).then((r) => r.json()),
+
+  uploadProfileImage: (file) => {
+    const form = new FormData();
+    form.append("image", file);
+    return fetch(`${BASE}/profile-image`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${localStorage.getItem("anjani_token")}` },
+      body: form,
+    }).then((r) => r.json());
+  },
 };
 
 export default api;

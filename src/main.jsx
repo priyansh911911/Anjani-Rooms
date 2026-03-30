@@ -12,6 +12,7 @@ import AdminRooms from './admin/pages/AdminRooms.jsx'
 import RoomForm from './admin/pages/RoomForm.jsx'
 import AdminCategories from './admin/pages/AdminCategories.jsx'
 import AdminSettings from './admin/pages/AdminSettings.jsx'
+import AdminGallery from './admin/pages/AdminGallery.jsx'
 import About from './pages/About.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="rooms/:id/edit" element={<RoomForm />} />
             <Route path="categories" element={<AdminCategories />} />
             <Route path="settings" element={<AdminSettings />} />
+            <Route path="gallery" element={<AdminGallery />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -42,7 +42,7 @@ export default function RoomCard({ room, location, checkIn, checkOut, nights }) 
 
         {/* ── Image Carousel ── */}
         <div
-          className="relative w-full md:w-72 h-52 md:h-auto flex-shrink-0 overflow-hidden group"
+          className="relative w-full md:w-72 h-52 flex-shrink-0 overflow-hidden group"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >

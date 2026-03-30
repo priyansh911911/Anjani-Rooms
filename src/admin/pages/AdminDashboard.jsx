@@ -25,7 +25,7 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div>
+    <div className="w-full">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-xl font-bold text-gray-900">Dashboard</h1>
         <Link to="/admin/rooms/new" className="bg-red-500 hover:bg-red-600 text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors">

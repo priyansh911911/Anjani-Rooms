@@ -1,12 +1,13 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
-import { LayoutDashboard, BedDouble, PlusCircle, Tag, Settings, LogOut } from "lucide-react";
+import { LayoutDashboard, BedDouble, PlusCircle, Tag, Settings, LogOut, Images } from "lucide-react";
 
 const navItems = [
   { to: "/admin/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { to: "/admin/rooms", icon: BedDouble, label: "Rooms" },
   { to: "/admin/rooms/new", icon: PlusCircle, label: "Add" },
   { to: "/admin/categories", icon: Tag, label: "Categories" },
+  { to: "/admin/gallery", icon: Images, label: "Gallery" },
   { to: "/admin/settings", icon: Settings, label: "Settings" },
 ];
 
@@ -57,7 +58,7 @@ export default function AdminLayout() {
       </aside>
 
       {/* Main content */}
-      <main className="md:ml-56 flex-1 p-4 md:p-6 min-h-screen pb-20 md:pb-6">
+      <main className="md:ml-56 flex-1 w-full p-4 md:p-6 min-h-screen pb-20 md:pb-6">
         <Outlet />
       </main>
 
